@@ -1,20 +1,23 @@
 import "package:flutter/material.dart";
 
+import "./question.dart";
+import "./answer.dart";
+
 void main() => runApp(MyFlutterApp());
 
 class MyFlutterApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyFlutterAppState();
+    return _MyFlutterAppState();
   }
 }
 
-class MyFlutterAppState extends State<MyFlutterApp> {
-  var questionIndex = 0;
+class _MyFlutterAppState extends State<MyFlutterApp> {
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
   }
 
@@ -31,19 +34,10 @@ class MyFlutterAppState extends State<MyFlutterApp> {
         ),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
-            RaisedButton(
-              child: Text('Answer 1'),
-              onPressed: answerQuestion,
-            ),
-            RaisedButton(
-              child: Text('Answer 2'),
-              onPressed: () => print("hello"),
-            ),
-            RaisedButton(
-              child: Text('Answer 3'),
-              onPressed: () => print("hello all"),
-            ),
+            Question(questions[_questionIndex]),
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
+            Answer(_answerQuestion)
           ],
         ),
       ),
